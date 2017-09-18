@@ -3,13 +3,21 @@
   "version": "1.0.0",
   "description": "JWT Passport Authentication",
   "scripts": {
-    "start": "npm-run-all --parallel open:src lint:watch",
+    "client": "npm-run-all --parallel open:src lint:watch",
     "open:src": "babel-node client/tools/srcServer.js",
     "lint": "node_modules/.bin/esw client/webpack.config.* client/src client/tools",
-    "lint:watch": "npm run lint -- --watch"
+    "lint:watch": "npm run lint -- --watch",
+    "server": "babel-node server/server.js --exec babel-node --presets es2015"
   },
   "dependencies": {
     "babel-polyfill": "6.8.0",
+    "bcrypt": "^1.0.3",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.1",
+    "jsonwebtoken": "^8.0.1",
+    "morgan": "^1.8.2",
+    "passport": "^0.4.0",
+    "passport-jwt": "^3.0.0",
     "react": "15.0.2",
     "react-dom": "15.0.2",
     "react-redux": "4.4.5",
