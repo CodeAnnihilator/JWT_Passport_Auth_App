@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 export default class App extends Component {
   render() {
     return (
-      <div className='container-fluid'>
+      <div>
         <h1>HELLO!</h1>
       </div>
     )

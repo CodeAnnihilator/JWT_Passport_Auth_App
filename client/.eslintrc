@@ -1,8 +1,8 @@
 {
   "extends": [
     "eslint:recommended",
-    "plugin:import/errors",
-    "plugin:import/warnings"
+    # "plugin:import/errors",
+    # "plugin:import/warnings"
   ],
   "plugins": [
     "react"
