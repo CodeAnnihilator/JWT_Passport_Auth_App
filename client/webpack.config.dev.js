@@ -3,9 +3,8 @@ import path from 'path'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
 export default {
-  // debug: true,
-  // noInfo: false,
   devtool: 'inline-source-map',
+  context: path.join(__dirname, './src'),
   entry: [
     'eventsource-polyfill',
     'webpack-hot-middleware/client?reload=true',
@@ -17,8 +16,17 @@ export default {
     publicPath: '/',
     filename: 'bundle.js'
   },
+  resolve: {
+    alias: {
+      src: path.resolve(__dirname, './src')
+    },
+    extensions: [".js", ".css"]
+  },
   devServer: {
-    contentBase: path.resolve(__dirname, 'src')
+    contentBase: path.resolve(__dirname, 'src'),
+    stats: {
+      chunks: false
+    }
   },
   plugins: [
     new webpack.optimize.ModuleConcatenationPlugin(),

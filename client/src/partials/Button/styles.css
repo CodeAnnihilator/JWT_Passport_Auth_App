@@ -1,0 +1,16 @@
+:local(.button) {
+  font-family: Calibri;
+  background-color: #50dfe4;
+  border-radius: 30px;
+  width: 180px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: none;
+  line-height: 40px;
+  color: #2b8386;
+  cursor: pointer;
+  align-self: center;
+  margin-top: 20px;
+  outline: none;
+}

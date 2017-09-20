@@ -1,0 +1,35 @@
+:local(.label) {
+  font-family: Calibri;
+  font-size: 11px;
+  font-weight: bold;
+  color: #646974;
+  text-transform: uppercase;
+  margin-left: 10px;
+}
+
+:local(.input) {
+  margin-top: 5px;
+  background-color: #49505f;
+  border: none;
+  line-height: 38px;
+  border-radius: 4px;
+  font-family: Calibri;
+  font-size: 16px;
+  padding-left: 10px;
+  width: 100%;
+  color: #6e9bc3;
+  box-sizing: border-box;
+}
+
+:local(.input::placeholder) {
+  font-style: italic;
+  font-family: Calibri;
+  font-size: 14px;
+  color: #2c3139 !important;
+}
+
+:local(.inputWrapper) {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
