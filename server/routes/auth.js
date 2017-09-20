@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt-nodejs'
 import jwt from 'jsonwebtoken'
 import config from '../config/main'
 import delay from '../config/delay'
+import uniqid from 'uniqid'
 
 export const users = []
 
@@ -29,7 +30,7 @@ export default (() => {
 
   authRouter.post('/register', async (req, res) => {
       const hashedPass = await hashPass(req.body.password)
-      const user = Object.assign({}, req.body, { password: hashedPass })
+      const user = Object.assign({}, req.body, { password: hashedPass, userId: uniqid() })
       return new Promise((resolve, reject) => {
         setTimeout(() => {
           users.push(user)
@@ -37,6 +38,17 @@ export default (() => {
         }, delay)
       }).then(user => res.status(200).send({ success: true, user }))
     })
+
+  authRouter.post('/authenticate_token', (req, res) => {
+    const token = req.body.token
+    if (!token) {
+      return res.status(401).json({ message: 'Must pass token' })
+    }
+    jwt.verify(token, config.secret, function(err, user) {
+      if (err) throw err
+      res.json({ user: user, token: token })
+    })
+  })
 
   authRouter.post('/authenticate', (req, res) => {
     const user = users.find(user => user.email === req.body.email)
@@ -48,7 +60,7 @@ export default (() => {
           const token = jwt.sign(user, config.secret, {
             expiresIn: 10080
           })
-          res.json({ success: true, token: `JWT ${token}` })
+          res.json({ success: true, token: token })
         } else {
           res.send({ success: false, message: 'Authentication failed. Passwords did not match' })
         }

@@ -1,13 +1,19 @@
 import React from 'react'
-import { Route } from 'react-router'
+import { Route, IndexRoute } from 'react-router'
 import App from './components/App'
 import AuthLayout from './layouts/auth/AuthLayout'
-import Login from './components/auth/login/Login'
-import Registration from './components/auth/registration/Registration'
+import NotFoundPage from './layouts/NotFound/NotFoundPage'
+import LoginContainer from './components/auth/login/LoginContainer'
+import RegistrateContainer from './components/auth/registration/RegistrationContainer'
+import RequireAuthHOC from './components/auth/RequireAuthHOC'
 
 export default (
-  <Route component={AuthLayout}>
-    <Route path='/login' component={Login}/>
-    <Route path='/registration' component={Registration} />
+  <Route path="/">
+    <IndexRoute component={RequireAuthHOC(App)} />
+    <Route component={AuthLayout}>
+      <Route path='/login' component={LoginContainer}/>
+      <Route path='/registration' component={RegistrateContainer} />
+    </Route>
+    <Route path="*" component={NotFoundPage} />
   </Route>
 )

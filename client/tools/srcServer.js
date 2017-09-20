@@ -25,7 +25,7 @@ app.listen(port, function(err) {
   if (err) {
     console.log(err)
   } else {
-    open(`http://localhost:${port}`)
+    open(`http://localhost:${port}/registration`)
     console.log(`Server is running on port ${port}`)
   }
 })

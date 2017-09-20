@@ -6,7 +6,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <h1>HELLO!</h1>
+        <h1>HELLO! YOU HAVE SUCCESSFULLY LOGGED IN!</h1>
       </div>
     )
   }
