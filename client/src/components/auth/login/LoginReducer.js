@@ -1,20 +1,30 @@
 import typeToReducer from 'type-to-reducer'
 
-import { AUTHORIZE_SUCCESS } from 'src/components/auth/login/LoginActions'
+import {
+  LOGIN_PENDING,
+  LOGIN_SUCCESS
+} from 'src/components/auth/login/LoginActions'
 
 const initialState = {
   authPending: false,
+  inProgressMessage: '',
+  descriptionMessage: '',
   isAuthenticated: false,
   username: '',
   email: ''
 }
 
 export default typeToReducer({
-  [ AUTHORIZE_SUCCESS ]: (state, action) => ({
+  [ LOGIN_PENDING ]: (state, { isPending, inProgressMessage, descriptionMessage }) => ({
     ...state,
-    isAuthenticated: action.payload.isAuthenticated,
-    username: action.payload.username,
-    email: action.payload.email,
-    message: action.payload.message
+    authPending: isPending,
+    inProgressMessage,
+    descriptionMessage
+  }),
+  [ LOGIN_SUCCESS ]: (state, { user: { username, email } }) => ({
+    ...state,
+    isAuthenticated: true,
+    username,
+    email
   })
 }, initialState)

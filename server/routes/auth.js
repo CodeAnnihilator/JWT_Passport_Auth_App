@@ -50,18 +50,23 @@ export default (() => {
 
   authRouter.post('/authenticate', (req, res) => {
     const user = users.find(user => user.email === req.body.email)
-    if (!user) {
-      res.status(403).send({ success: false, message: 'Authentication failed. User not found' })
-    } else {
-      comparePassword(req.body.password, user.password, function(err, isMatch) {
-        if (isMatch && !err) {
-          const token = jwt.sign(user, config.secret, { expiresIn: 10080 })
-          res.json({ success: true, token: token })
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (!user) {
+          res.status(403).send({ success: false, message: 'Authentication failed. User not found' })
         } else {
-          res.send({ success: false, message: 'Authentication failed. Passwords did not match' })
+          comparePassword(req.body.password, user.password, function(err, isMatch) {
+            if (isMatch && !err) {
+              const token = jwt.sign(user, config.secret, { expiresIn: 10080 })
+              res.json({ success: true, token: token, user: user })
+            } else {
+              res.send({ success: false, message: 'Authentication failed. Passwords did not match' })
+            }
+          })
         }
-      })
-    }
+        resolve(user)
+      }, delay)
+    })
   })
   return authRouter
 })()

@@ -8,11 +8,23 @@ import PreloaderModal from 'src/partials/PreloaderModal/PreloaderModal'
 
 import styles from './style.css'
 
-export default class AuthLayout extends Component {
+export default class AuthLayoutComponent extends Component {
   render() {
+    const {
+      authPending,
+      inProgressMessage,
+      descriptionMessage,
+      isAuthenticated
+    } = this.props
     return (
       <div className={styles.page_wrapper}>
-        { /*<PreloaderModal />*/ }
+        {
+          authPending &&
+            <PreloaderModal
+              inProgressMessage={inProgressMessage}
+              descriptionMessage={descriptionMessage}
+            />
+        }
         <div className={styles.card_wrapper}>
           <LeftSideDescription />
           <div className={styles.form_wrapper}>
