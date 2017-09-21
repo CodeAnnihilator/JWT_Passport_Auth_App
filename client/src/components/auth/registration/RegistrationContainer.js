@@ -4,7 +4,7 @@ import { registrate } from './RegistrationActions'
 import RegistrationComponent from './RegistrationComponent'
 
 const mapDispatchToProps = dispatch => ({
-  registerUser: (username, email, password, password2) => dispatch(registrate(username, email, password, password2))
+  registerUser: (username, email, password) => dispatch(registrate(username, email, password))
 })
 
 export default connect(null, mapDispatchToProps)(RegistrationComponent)

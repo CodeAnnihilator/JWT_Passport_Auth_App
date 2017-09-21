@@ -65,7 +65,7 @@ export default (() => {
           })
         }
         resolve(user)
-      }, delay)
+      }, 3000)
     })
   })
   return authRouter

@@ -5,6 +5,10 @@ import {
   LOGIN_SUCCESS
 } from 'src/components/auth/login/LoginActions'
 
+import {
+  REGISTRATE_PENDING
+} from 'src/components/auth/registration/RegistrationActions'
+
 const initialState = {
   authPending: false,
   inProgressMessage: '',
@@ -16,6 +20,12 @@ const initialState = {
 
 export default typeToReducer({
   [ LOGIN_PENDING ]: (state, { isPending, inProgressMessage, descriptionMessage }) => ({
+    ...state,
+    authPending: isPending,
+    inProgressMessage,
+    descriptionMessage
+  }),
+  [ REGISTRATE_PENDING ]: (state, { isPending, inProgressMessage, descriptionMessage }) => ({
     ...state,
     authPending: isPending,
     inProgressMessage,

@@ -5,22 +5,34 @@ import Cookies from 'universal-cookie'
 const cookies = new Cookies()
 
 import { REGISTRATE } from 'src/components/auth/registration/RegistrationActions'
+import { registratePending } from 'src/components/auth/registration/RegistrationActions'
 import { registrateUser } from 'src/components/auth/registration/RegistrationApi'
 
 import { authorizeUser } from 'src/components/auth/login/LoginApi'
-import { authorizeSuccess } from 'src/components/auth/login/LoginActions'
+import { loginSuccess, loginPending } from 'src/components/auth/login/LoginActions'
 
 function* authorizeUserSaga(username, email, password) {
-  const { data: { token } } = yield call(authorizeUser, email, password)
-  cookies.set('token', token, { path: '/' })
-  yield put(authorizeSuccess(username, email))
-  browserHistory.push('/')
+  try {
+    yield put(loginPending(true, 'Login is in progress', 'Checking user data'))
+    const { data: { token } } = yield call(authorizeUser, email, password)
+    cookies.set('token', token, { path: '/' })
+    yield put(loginSuccess(username, email))
+    yield put(loginPending(false, 'success', `Wow, you have successfully logged in, ${username}!`))
+    browserHistory.push('/')
+  } catch (e) {
+
+  }
 }
 
 export default function* registrateUserSaga() {
   while (true) {
-    const { payload: { username, email, password } } = yield take(REGISTRATE)
-    const { data } = yield call(registrateUser, username, email, password)
-    yield fork(authorizeUserSaga, username, email, password)
+    const { username, email, password } = yield take(REGISTRATE)
+    try {
+      yield put(registratePending(true, 'Registration is in progress', `Saving User with email: ${email}`))
+      yield call(registrateUser, username, email, password)
+      yield fork(authorizeUserSaga, username, email, password)
+    } catch (e) {
+      console.log(e)
+    }
   }
 }

@@ -91,7 +91,7 @@ export default class Registration extends Component {
           type='password'
           name='password2'
         />
-        <Button onClick={() => registerUser(username, email, password, password2)}
+        <Button onClick={() => registerUser(username, email, password)}
           isDisabled={!formValid}
           label='register'
         />
