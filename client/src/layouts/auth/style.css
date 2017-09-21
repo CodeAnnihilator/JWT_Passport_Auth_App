@@ -15,7 +15,7 @@
 
 :local(.card_wrapper) {
   display: flex;
-  height: 540px;
+  height: 600px;
   border-radius: 4px;
   background: rgba(53, 60, 74, 0.95);
 }

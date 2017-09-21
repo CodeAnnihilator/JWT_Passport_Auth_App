@@ -45,11 +45,18 @@ export default class Login extends Component {
     }, this.validateForm())
   }
 
-  validateForm = () => this.setState({ formValid: this.state.emailValid && this.state.passwordValid })
+  validateForm = () => this.setState({
+    formValid: this.state.emailValid && this.state.passwordValid
+  })
 
   render() {
     const { login } = this.props
-    const { email, password, formErrors, formValid } = this.state
+    const {
+      email,
+      password,
+      formErrors,
+      formValid
+    } = this.state
     return (
       <div className={styles.pageWrapper}>
         <Input onChange={this.handleChangeInput}
@@ -67,7 +74,10 @@ export default class Login extends Component {
           type='password'
           name='password'
         />
-        <Button isDisabled={!formValid} label='login' onClick={() => login(email, password)} />
+        <Button onClick={() => login(email, password)}
+          isDisabled={!formValid}
+          label='login'
+        />
       </div>
     )
   }
