@@ -30,7 +30,7 @@ export default (() => {
 
   authRouter.post('/register', async (req, res) => {
       const hashedPass = await hashPass(req.body.password)
-      const user = Object.assign({}, req.body, { password: hashedPass, userId: uniqid() })
+      const user = Object.assign({}, req.body, { password: hashedPass })
       return new Promise((resolve, reject) => {
         setTimeout(() => {
           users.push(user)
@@ -41,9 +41,7 @@ export default (() => {
 
   authRouter.post('/authenticate_token', (req, res) => {
     const token = req.body.token
-    if (!token) {
-      return res.status(401).json({ message: 'Must pass token' })
-    }
+    if (!token) return res.status(401).json({ message: 'Must pass token' })
     jwt.verify(token, config.secret, function(err, user) {
       if (err) throw err
       res.json({ user: user, token: token })
@@ -57,9 +55,7 @@ export default (() => {
     } else {
       comparePassword(req.body.password, user.password, function(err, isMatch) {
         if (isMatch && !err) {
-          const token = jwt.sign(user, config.secret, {
-            expiresIn: 10080
-          })
+          const token = jwt.sign(user, config.secret, { expiresIn: 10080 })
           res.json({ success: true, token: token })
         } else {
           res.send({ success: false, message: 'Authentication failed. Passwords did not match' })

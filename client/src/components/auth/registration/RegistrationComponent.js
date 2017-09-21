@@ -10,41 +10,41 @@ export default class Registration extends Component {
       username: '',
       email: '',
       password: '',
-      password2: ''
+      password2: '',
+
     }
   }
 
-  updateField(field, value) {
-    this.setState({ [field]: value })
-  }
+  updateField = e => this.setState({ [e.target.name]: e.target.value })
 
   render() {
     const { registerUser } = this.props
     const { username, email, password, password2 } = this.state
     return (
       <div className={styles.pageWrapper}>
-        <Input onChange={e => this.updateField('username', e.target.value)}
+        <Input onChange={this.updateField}
           value={username}
           type='text'
           placeholder='Enter your username...'
-          field='username'
+          name='username'
         />
-        <Input onChange={e => this.updateField('email', e.target.value)}
+        <Input onChange={this.updateField}
           value={email}
           type='text'
           placeholder='Enter your email...'
-          field='email'
+          name='email'
         />
-        <Input onChange={e => this.updateField('password', e.target.value)}
+        <Input onChange={this.updateField}
+          requirements='min 5 signs'
           type='password'
           placeholder='Enter your password...'
-          field='password'
+          name='password'
         />
-        <Input onChange={e => this.updateField('password2', e.target.value)}
+        <Input onChange={this.updateField}
           value={password2}
           type='password'
           placeholder='Repeat password...'
-          field='password2'
+          name='password2'
         />
         <Button label='register' onClick={() => registerUser(username, email, password, password2)} />
       </div>

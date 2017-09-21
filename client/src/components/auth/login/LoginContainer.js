@@ -1,10 +1,10 @@
 import { connect } from 'react-redux'
-import { authorize } from './LoginActions'
+import { login } from './LoginActions'
 
 import LoginComponent from './LoginComponent'
 
 const mapDispatchToProps = dispatch => ({
-  authorizeUser: (email, password) => dispatch(authorize(email, password))
+  login: (email, password) => dispatch(login(email, password))
 })
 
 export default connect(null, mapDispatchToProps)(LoginComponent)

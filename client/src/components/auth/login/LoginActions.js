@@ -13,9 +13,9 @@ export const login = (email, password) => ({
   payload: { email, password }
 })
 
-export const loginSuccess = (token, userId) => ({
+export const loginSuccess = user => ({
   type: LOGIN_SUCCESS,
-  payload: { token, userId }
+  payload: { user }
 })
 
 export const authorizeSuccess = (username, email) => ({

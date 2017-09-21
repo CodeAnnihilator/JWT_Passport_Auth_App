@@ -6,8 +6,7 @@ const initialState = {
   authPending: false,
   isAuthenticated: false,
   username: '',
-  email: '',
-  message: ''
+  email: ''
 }
 
 export default typeToReducer({

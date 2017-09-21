@@ -14,3 +14,9 @@
   margin-top: 20px;
   outline: none;
 }
+
+:local(.disabled) {
+  color: #454d5d;
+  background-color: #313640;
+  cursor: default;
+}
