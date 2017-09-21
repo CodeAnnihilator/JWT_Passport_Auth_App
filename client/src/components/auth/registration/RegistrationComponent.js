@@ -27,10 +27,12 @@ export default class Registration extends Component {
 
   validateField = (fieldName, value) => {
     let fieldValidationErrors = this.state.formErrors
-    let emailValid = this.state.emailValid
-    let passwordValid = this.state.passwordValid
-    let password2Valid = this.state.password2Valid
+    let { formValid, usernameValid, emailValid, passwordValid, password2Valid } = this.state
     switch (fieldName) {
+      case 'username':
+        usernameValid = value !== ''
+        fieldValidationErrors.username = usernameValid ? '' : ' can\'t be empty'
+        break;
       case 'email':
         emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)
         fieldValidationErrors.email = emailValid ? '' : ' is invalid'
@@ -49,13 +51,11 @@ export default class Registration extends Component {
         break;
     }
     this.setState({
+      usernameValid, emailValid, passwordValid, password2Valid,
+      formValid: usernameValid && emailValid && passwordValid && password2Valid,
       formErrors: fieldValidationErrors,
-      emailValid: emailValid,
-      passwordValid: passwordValid
-    }, this.validateForm())
+    })
   }
-
-  validateForm = () => this.setState({ formValid: this.state.emailValid && this.state.passwordValid })
 
   render() {
     const { registerUser } = this.props

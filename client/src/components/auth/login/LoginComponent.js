@@ -39,15 +39,11 @@ export default class Login extends Component {
         break;
     }
     this.setState({
+      emailValid, passwordValid,
       formErrors: fieldValidationErrors,
-      emailValid: emailValid,
-      passwordValid: passwordValid
-    }, this.validateForm())
+      formValid: emailValid && passwordValid
+    })
   }
-
-  validateForm = () => this.setState({
-    formValid: this.state.emailValid && this.state.passwordValid
-  })
 
   render() {
     const { login } = this.props
