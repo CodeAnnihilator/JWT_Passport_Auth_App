@@ -1,0 +1,30 @@
+:local(.tabs) {
+  display: flex;
+  justify-content: center;
+  height: 74px;
+  align-items: center;
+  border-bottom: 1px solid #4a5365;
+  margin: 0 18px;
+}
+
+:local(.tab) {
+  font-family: Calibri;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #959ca6;
+  margin: 0 20px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+:local(.tab_active) {
+  font-family: Calibri;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  margin: 0 20px;
+  cursor: pointer;
+  text-decoration: none;
+}

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { login } from './LoginActions'
+import { login } from './loginActions'
 
 import LoginComponent from './LoginComponent'
 

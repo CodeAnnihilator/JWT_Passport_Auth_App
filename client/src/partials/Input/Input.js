@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import styles from './styles.css'
 
 const Input = ({
@@ -29,10 +30,10 @@ const Input = ({
 }
 
 Input.propTypes = {
-  requirements: PropTypes.string.isRequired,
+  requirements: PropTypes.string,
   placeholder: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  error: PropTypes.object,
+  error: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired
 }

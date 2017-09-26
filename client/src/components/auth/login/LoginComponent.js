@@ -1,8 +1,8 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import Input from 'src/partials/Input/Input'
 import Button from 'src/partials/Button/Button'
 import styles from './styles.css'
-import { fetch } from 'src/utils/fetch'
 
 export default class Login extends Component {
   constructor(props) {
@@ -23,36 +23,23 @@ export default class Login extends Component {
   }
 
   validateField = (fieldName, value) => {
-    let fieldValidationErrors = this.state.formErrors
-    let emailValid = this.state.emailValid
-    let passwordValid = this.state.passwordValid
-    switch (fieldName) {
-      case 'email':
-        emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)
-        fieldValidationErrors.email = emailValid ? '' : ' is invalid'
-        break;
-      case 'password':
-        passwordValid = value.length >= 6
-        fieldValidationErrors.password = passwordValid ? '' : ' is too short'
-        break;
-      default:
-        break;
+    let { formErrors, emailValid, passwordValid } = this.state
+    if (fieldName === 'email') {
+      emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)
+      formErrors.email = emailValid ? '' : ' is invalid'
+    } else if (fieldName === 'password') {
+      passwordValid = value.length >= 6
+      formErrors.password = passwordValid ? '' : ' is too short'
     }
     this.setState({
-      emailValid, passwordValid,
-      formErrors: fieldValidationErrors,
+      emailValid, passwordValid, formErrors,
       formValid: emailValid && passwordValid
     })
   }
 
   render() {
     const { login } = this.props
-    const {
-      email,
-      password,
-      formErrors,
-      formValid
-    } = this.state
+    const { email, password, formErrors, formValid } = this.state
     return (
       <div className={styles.pageWrapper}>
         <Input onChange={this.handleChangeInput}

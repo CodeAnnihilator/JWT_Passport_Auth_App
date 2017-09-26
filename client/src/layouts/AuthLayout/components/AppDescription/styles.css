@@ -1,0 +1,93 @@
+:local(.left_info) {
+  width: 520px;
+  border-radius: 4px 0 0 4px;
+  background: url('./images/left_info_bg.jpg') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 7px 0px 30px 0px rgba(0, 0, 0, 0.7);
+}
+
+:local(.cup) {
+  width: 64px;
+  height: 68px;
+  margin-top: 130px;
+}
+
+:local(.title_wrapper) {
+  margin-top: 20px;
+}
+
+:local(.title) {
+  font-family: Segoe Script;
+  font-size: 30px;
+  color: #d1e450;
+  font-weight: bold;
+}
+
+:local(.title_after) {
+  font-family: Calibri;
+  font-size: 14px;
+  color: #dadada;
+  font-weight: bold;
+  font-style: italic;
+  margin-left: 10px;
+}
+
+:local(.title_description) {
+  margin-top: 10px;
+  font-family: Calibri;
+  color: #767f93;
+  font-style: italic;
+  font-size: 14px;
+  text-align: center;
+  width: 296px;
+}
+
+:local(.github_wrapper) {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 110px;
+}
+
+:local(.github) {
+  width: 28px;
+  height: 27px;
+  margin-right: 15px;
+  align-self: center;
+}
+
+:local(.github_description) {
+  font-family: Calibri;
+  color: #767f93;
+  font-style: italic;
+  font-size: 14px;
+}
+
+:local(.github_link) {
+  font-family: Calibri;
+  font-size: 12px;
+  text-decoration: underline;
+  color: #50dfe4;
+  cursor: pointer;
+}
+
+:local(.copyright_wrapper) {
+  margin-top: 20px;
+}
+
+:local(.copyright) {
+  font-family: Calibri;
+  font-size: 12px;
+  color: #485266;
+}
+
+:local(.author_link) {
+  font-size: 12px;
+  font-family: Calibri;
+  font-weight: bold;
+  color: #45a781;
+  text-decoration: underline;
+  cursor: pointer;
+}

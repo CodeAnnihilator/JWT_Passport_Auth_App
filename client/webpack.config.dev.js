@@ -18,7 +18,8 @@ export default {
   },
   resolve: {
     alias: {
-      src: path.resolve(__dirname, './src')
+      src: path.resolve(__dirname, './src'),
+      images: path.join(__dirname, './src/assets/images')
     },
     extensions: [".js", ".css"]
   },
@@ -45,7 +46,10 @@ export default {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: 'css-loader?importLoaders=1'
+          use: [
+            { loader: 'css-loader?importLoaders=1' },
+            { loader: 'resolve-url-loader' }
+          ]
         })
       },
       { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file' },

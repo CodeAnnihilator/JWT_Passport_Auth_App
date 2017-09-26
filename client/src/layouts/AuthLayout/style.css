@@ -1,0 +1,16 @@
+:local(.card_wrapper) {
+  display: flex;
+  height: 600px;
+  border-radius: 4px;
+  background: rgba(53, 60, 74, 0.95);
+}
+
+:local(.form_wrapper) {
+  display: flex;
+  width: 420px;
+  flex-direction: column;
+}
+
+:local(.form_container) {
+  margin: 5px 40px 0 40px;
+}
