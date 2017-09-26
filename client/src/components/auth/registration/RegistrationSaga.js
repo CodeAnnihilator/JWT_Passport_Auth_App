@@ -1,6 +1,8 @@
 import { take, call, fork, put } from 'redux-saga/effects'
 import { browserHistory } from 'react-router'
 
+const DAEMON = true
+
 import Cookies from 'universal-cookie'
 const cookies = new Cookies()
 
@@ -20,12 +22,12 @@ function* authorizeUserSaga(username, email, password) {
     yield put(loginPending(false, 'success', `Wow, you have successfully logged in, ${username}!`))
     browserHistory.push('/')
   } catch (e) {
-
+    console.log(e)
   }
 }
 
 export default function* registrateUserSaga() {
-  while (true) {
+  while (DAEMON) {
     const { username, email, password } = yield take(REGISTRATE)
     try {
       yield put(registratePending(true, 'Registration is in progress', `Saving User with email: ${email}`))

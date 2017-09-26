@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import Input from 'src/partials/Input/Input'
 import Button from 'src/partials/Button/Button'
 import styles from './styles.css'
@@ -77,4 +77,8 @@ export default class Login extends Component {
       </div>
     )
   }
+}
+
+Login.propTypes = {
+  login: PropTypes.func.isRequired
 }

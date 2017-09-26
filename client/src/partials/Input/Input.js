@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import styles from './styles.css'
 
 const Input = ({
@@ -26,6 +26,15 @@ const Input = ({
       <span className={styles.error}>{ error }</span>
     </label>
   )
+}
+
+Input.propTypes = {
+  requirements: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  error: PropTypes.object,
+  type: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired
 }
 
 export default Input

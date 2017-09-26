@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import styles from './styles.css'
 import Input from 'src/partials/Input/Input'
 import Button from 'src/partials/Button/Button'
@@ -53,7 +53,7 @@ export default class Registration extends Component {
     this.setState({
       usernameValid, emailValid, passwordValid, password2Valid,
       formValid: usernameValid && emailValid && passwordValid && password2Valid,
-      formErrors: fieldValidationErrors,
+      formErrors: fieldValidationErrors
     })
   }
 
@@ -98,4 +98,8 @@ export default class Registration extends Component {
       </div>
     )
   }
+}
+
+Registration.propTypes = {
+  registerUser: PropTypes.object
 }

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import styles from './styles.css'
 
 const successStatuses = {
@@ -27,4 +27,9 @@ export default class PreloaderModal extends Component {
       </div>
     )
   }
+}
+
+PreloaderModal.propTypes = {
+  inProgressMessage: PropTypes.string.isRequired,
+  descriptionMessage: PropTypes.string.isRequired
 }

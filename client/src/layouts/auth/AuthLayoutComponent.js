@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
 
 import LeftSideDescription from './components/LeftSideDescription/LeftSideDescription'
@@ -37,4 +37,12 @@ export default class AuthLayoutComponent extends Component {
       </div>
     )
   }
+}
+
+AuthLayoutComponent.propTypes = {
+  authPending: PropTypes.bool.isRequired,
+  inProgressMessage: PropTypes.string.isRequired,
+  descriptionMessage: PropTypes.string.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  children: PropTypes.object
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, IndexRoute } from 'react-router'
-import App from './components/App'
+import MainLayout from './layouts/main/MainLayout'
 import AuthLayoutContainer from './layouts/auth/AuthLayoutContainer'
 import NotFoundPage from './layouts/NotFound/NotFoundPage'
 import LoginContainer from './components/auth/login/LoginContainer'
@@ -9,7 +9,7 @@ import RequireAuthHOC from './components/auth/RequireAuthHOC'
 
 export default (
   <Route path="/">
-    <IndexRoute component={RequireAuthHOC(App)} />
+    <IndexRoute component={RequireAuthHOC(MainLayout)} />
     <Route component={AuthLayoutContainer}>
       <Route path='/login' component={LoginContainer}/>
       <Route path='/registration' component={RegistrateContainer} />

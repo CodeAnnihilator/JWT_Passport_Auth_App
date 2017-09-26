@@ -1,6 +1,8 @@
 import { take, call, put, fork, select } from 'redux-saga/effects'
 import { browserHistory } from 'react-router'
 
+const DAEMON = true
+
 import Cookies from 'universal-cookie'
 const cookies = new Cookies()
 
@@ -8,14 +10,21 @@ import { LOGIN, AUTH_TOKEN_SUCCESS } from 'src/components/auth/login/LoginAction
 import { loginPending, loginSuccess } from 'src/components/auth/login/LoginActions'
 import { authorizeUser, authenticateToken } from 'src/components/auth/login/LoginApi'
 
+function delay(ms) {
+  return new Promise(resolve => setTimeout(() => resolve(true), ms))
+}
+
 function* authorizeTokenSaga() {
-  while (true) {
+  while (DAEMON) {
     const { token } = yield take(AUTH_TOKEN_SUCCESS)
+    yield put(loginPending(true, 'Authorization is in progress', 'Checking user data'))
     const pathName = yield select(state => state.routing.locationBeforeTransitions.pathname)
     if (['/login', '/registration'].some(str => str === pathName)) browserHistory.push('/')
     try {
       const { data: { user } } = yield call(authenticateToken, token)
+      yield call(delay, 2000)
       yield put(loginSuccess(user))
+      yield put(loginPending(false, 'success', 'Wow, you have successfully logged in!'))
     } catch (e) {
       console.log(e)
     }
@@ -24,10 +33,10 @@ function* authorizeTokenSaga() {
 
 export default function* authorizeUserSaga() {
   yield fork(authorizeTokenSaga)
-  while (true) {
+  while (DAEMON) {
     const { payload: { username, email, password } } = yield take(LOGIN)
     try {
-      yield put(loginPending(true, 'Validation is in progress', 'Checking user data'))
+      yield put(loginPending(true, 'Authorization is in progress', 'Checking user data'))
       const { data: { token, user } } = yield call(authorizeUser, email, password)
       yield put(loginSuccess(user))
       yield put(loginPending(false, 'success', 'Wow, you have successfully logged in!'))

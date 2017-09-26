@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 
 export default function(ComposedComponent) {
@@ -6,6 +6,9 @@ export default function(ComposedComponent) {
   class Authentication extends Component {
     static contextTypes = {
       router: React.PropTypes.object
+    }
+    static propTypes = {
+      isAuthenticated: React.PropTypes.bool.isRequired
     }
     componentWillMount() {
       if (!this.props.isAuthenticated) {

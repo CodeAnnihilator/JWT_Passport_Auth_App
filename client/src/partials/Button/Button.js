@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import styles from './styles.css'
 import cn from 'classnames'
 
@@ -9,6 +9,12 @@ const Button = ({ label, onClick, isDisabled }) => {
       onClick={ isDisabled ? '' : onClick}
     >{ label }</button>
   )
+}
+
+Button.propTypes = {
+  label: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  isDisabled: PropTypes.bool.isRequired
 }
 
 export default Button
