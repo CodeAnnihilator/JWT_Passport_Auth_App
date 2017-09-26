@@ -8,8 +8,8 @@ export default function(ComposedComponent) {
       router: React.PropTypes.object
     }
     componentWillMount() {
-      if(!this.props.isAuthenticated) {
-        this.context.router.push('/login')
+      if (!this.props.isAuthenticated) {
+        return this.context.router.push('/login')
       }
     }
     componentWillUpdate(nextProps) {

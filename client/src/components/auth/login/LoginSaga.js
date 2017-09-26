@@ -1,14 +1,29 @@
-import { take, call, put } from 'redux-saga/effects'
+import { take, call, put, fork, select } from 'redux-saga/effects'
 import { browserHistory } from 'react-router'
 
 import Cookies from 'universal-cookie'
 const cookies = new Cookies()
 
-import { LOGIN } from 'src/components/auth/login/LoginActions'
+import { LOGIN, AUTH_TOKEN_SUCCESS } from 'src/components/auth/login/LoginActions'
 import { loginPending, loginSuccess } from 'src/components/auth/login/LoginActions'
-import { authorizeUser } from 'src/components/auth/login/LoginApi'
+import { authorizeUser, authenticateToken } from 'src/components/auth/login/LoginApi'
+
+function* authorizeTokenSaga() {
+  while (true) {
+    const { token } = yield take(AUTH_TOKEN_SUCCESS)
+    const pathName = yield select(state => state.routing.locationBeforeTransitions.pathname)
+    if (['/login', '/registration'].some(str => str === pathName)) browserHistory.push('/')
+    try {
+      const { data: { user } } = yield call(authenticateToken, token)
+      yield put(loginSuccess(user))
+    } catch (e) {
+      console.log(e)
+    }
+  }
+}
 
 export default function* authorizeUserSaga() {
+  yield fork(authorizeTokenSaga)
   while (true) {
     const { payload: { username, email, password } } = yield take(LOGIN)
     try {

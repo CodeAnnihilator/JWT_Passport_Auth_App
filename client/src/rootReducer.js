@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import { routerReducer } from 'react-router-redux'
 import { enableBatching } from 'redux-batched-actions'
+import { routerReducer } from 'react-router-redux'
 
 import LoginReducer from 'src/components/auth/login/LoginReducer.js'
 

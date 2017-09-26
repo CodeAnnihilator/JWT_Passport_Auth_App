@@ -2,7 +2,8 @@ import typeToReducer from 'type-to-reducer'
 
 import {
   LOGIN_PENDING,
-  LOGIN_SUCCESS
+  LOGIN_SUCCESS,
+  AUTH_TOKEN_SUCCESS
 } from 'src/components/auth/login/LoginActions'
 
 import {
@@ -36,5 +37,9 @@ export default typeToReducer({
     isAuthenticated: true,
     username,
     email
+  }),
+  [ AUTH_TOKEN_SUCCESS ]: state => ({
+    ...state,
+    isAuthenticated: true
   })
 }, initialState)

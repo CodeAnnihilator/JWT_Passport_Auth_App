@@ -3,8 +3,10 @@ import React from 'react'
 import { render } from 'react-dom'
 import configureStore from './store/configureStore'
 import { Provider } from 'react-redux'
+import { syncHistoryWithStore } from 'react-router-redux'
 import { Router, browserHistory } from 'react-router'
-import { loginSuccess } from 'src/components/auth/login/LoginActions'
+import { authTokenSuccess } from 'src/components/auth/login/LoginActions'
+
 
 import Cookies from 'universal-cookie'
 const cookies = new Cookies()
@@ -14,16 +16,17 @@ import './styles/styles.css'
 
 const store = configureStore()
 
-const token = cookies.get('token')
-const userId = cookies.get('userId')
+const history = syncHistoryWithStore(browserHistory, store)
 
-if (token && userId) {
-  store.dispatch({ type: loginSuccess(token, userId) })
+const token = cookies.get('token')
+
+if (token) {
+  store.dispatch(authTokenSuccess(token))
 }
 
 render(
   <Provider store={store}>
-    <Router history={browserHistory} routes={routes} />
+    <Router history={history} routes={routes} />
   </Provider>,
   document.getElementById('app')
 )
