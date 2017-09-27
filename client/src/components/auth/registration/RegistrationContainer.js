@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { registrate } from './RegistrationActions'
+import { registrate } from './registrationActions'
 
 import RegistrationComponent from './RegistrationComponent'
 

@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import styles from './styles.css'
 import Input from '@src/partials/Input/Input'
 import Button from '@src/partials/Button/Button'
@@ -26,34 +27,26 @@ export default class Registration extends Component {
   }
 
   validateField = (fieldName, value) => {
-    let fieldValidationErrors = this.state.formErrors
-    let { formValid, usernameValid, emailValid, passwordValid, password2Valid } = this.state
-    switch (fieldName) {
-      case 'username':
-        usernameValid = value !== ''
-        fieldValidationErrors.username = usernameValid ? '' : ' can\'t be empty'
-        break;
-      case 'email':
-        emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)
-        fieldValidationErrors.email = emailValid ? '' : ' is invalid'
-        break;
-      case 'password':
-        passwordValid = value.length >= 6
-        password2Valid = this.state.password2 === value
-        fieldValidationErrors.password = passwordValid ? '' : ' is too short'
-        fieldValidationErrors.password2 = password2Valid ? '' : ' passwords don\'t match'
-        break;
-      case 'password2':
-        password2Valid = this.state.password === value
-        fieldValidationErrors.password2 = password2Valid ? '' : ' passwords don\'t match'
-        break;
-      default:
-        break;
+    // NOTE: to make it look shorter, switch case was replaced with if else statements
+    let { formErrors, formValid, usernameValid, emailValid, passwordValid, password2Valid } = this.state
+    if (fieldName === 'username') {
+      usernameValid = value !== ''
+      formErrors.username = usernameValid ? '' : ' can\'t be empty'
+    } else if (fieldName === 'email') {
+      emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)
+      formErrors.email = emailValid ? '' : ' is invalid'
+    } else if (fieldName === 'password') {
+      passwordValid = value.length >= 6
+      password2Valid = this.state.password2 === value
+      formErrors.password = passwordValid ? '' : ' is too short'
+      formErrors.password2 = password2Valid ? '' : ' passwords don\'t match'
+    } else if (fieldName === 'password2') {
+      password2Valid = this.state.password === value
+      formErrors.password2 = password2Valid ? '' : ' passwords don\'t match'
     }
     this.setState({
-      usernameValid, emailValid, passwordValid, password2Valid,
-      formValid: usernameValid && emailValid && passwordValid && password2Valid,
-      formErrors: fieldValidationErrors
+      usernameValid, emailValid, passwordValid, password2Valid, formErrors,
+      formValid: usernameValid && emailValid && passwordValid && password2Valid
     })
   }
 
@@ -101,5 +94,5 @@ export default class Registration extends Component {
 }
 
 Registration.propTypes = {
-  registerUser: PropTypes.object
+  registerUser: PropTypes.func.isRequired
 }

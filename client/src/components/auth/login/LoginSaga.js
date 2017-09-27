@@ -16,14 +16,14 @@ function delay(ms) {
 
 function* authorizeTokenSaga() {
   while (DAEMON) {
-    const { token } = yield take(AUTH_TOKEN_SUCCESS)
+    const { payload: { token } } = yield take(AUTH_TOKEN_SUCCESS)
     yield put(loginPending(true, 'Authorization is in progress', 'Checking user data'))
     const pathName = yield select(state => state.routing.location.pathname)
     // if (['/login', '/registration'].some(str => str === pathName)) yield put(push('/'))
     try {
       const { data: { user } } = yield call(authenticateToken, token)
       yield call(delay, 2000)
-      yield put(loginSuccess(user))
+      yield put(loginSuccess(user.username))
       yield put(loginPending(false, 'success', 'Wow, you have successfully logged in!'))
     } catch (e) {
       console.log(e)
@@ -34,11 +34,11 @@ function* authorizeTokenSaga() {
 export default function* authorizeUserSaga() {
   yield fork(authorizeTokenSaga)
   while (DAEMON) {
-    const { payload: { username, email, password } } = yield take(LOGIN)
+    const { payload: { email, password } } = yield take(LOGIN)
     try {
       yield put(loginPending(true, 'Authorization is in progress', 'Checking user data'))
       const { data: { token, user } } = yield call(authorizeUser, email, password)
-      yield put(loginSuccess(user))
+      yield put(loginSuccess(user.username))
       yield put(loginPending(false, 'success', 'Wow, you have successfully logged in!'))
       cookies.set('token', token, { path: '/' })
       yield put(push('/'))

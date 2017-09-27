@@ -3,11 +3,11 @@ import { Route, Switch } from 'react-router-dom'
 
 import MainLayout from './layouts/MainLayout/MainLayout'
 import AuthLayout from './layouts/AuthLayout/AuthLayout'
+
 import RequireAuthHOC from './componentsHOC/RequireAuthHOC'
 import PageNotFound from './components/PageNotFound/PageNotFound'
-// import AuthLayoutContainer from './layouts/auth/AuthLayoutContainer'
 import LoginContainer from './components/Auth/Login/LoginContainer'
-// import RegistrateContainer from './components/auth/registration/RegistrationContainer'
+import RegistrateContainer from './components/Auth/Registration/RegistrationContainer'
 import App from './components/App'
 
 
@@ -18,7 +18,7 @@ const Routes = () => (
         <Route path='/' exact component={RequireAuthHOC(App)} />
         <AuthLayout>
           <Route path='/login' component={LoginContainer} />
-          <Route path='/registration' component={() => <div>REGISTRATION</div>} />
+          <Route path='/registration' component={RegistrateContainer} />
         </AuthLayout>
         <Route component={PageNotFound} />
       </Switch>

@@ -23,6 +23,7 @@ export default class Login extends Component {
   }
 
   validateField = (fieldName, value) => {
+    // NOTE: to make it look shorter, switch case was replaced with if else statements
     let { formErrors, emailValid, passwordValid } = this.state
     if (fieldName === 'email') {
       emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)
