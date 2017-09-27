@@ -6,12 +6,12 @@ const DAEMON = true
 import Cookies from 'universal-cookie'
 const cookies = new Cookies()
 
-import { REGISTRATE } from 'src/components/auth/registration/RegistrationActions'
-import { registratePending } from 'src/components/auth/registration/RegistrationActions'
-import { registrateUser } from 'src/components/auth/registration/RegistrationApi'
+import { REGISTRATE } from '@src/components/auth/registration/RegistrationActions'
+import { registratePending } from '@src/components/auth/registration/RegistrationActions'
+import { registrateUser } from '@src/components/auth/registration/RegistrationApi'
 
-import { authorizeUser } from 'src/components/auth/login/LoginApi'
-import { loginSuccess, loginPending } from 'src/components/auth/login/LoginActions'
+import { authorizeUser } from '@src/components/auth/login/LoginApi'
+import { loginSuccess, loginPending } from '@src/components/auth/login/LoginActions'
 
 function* authorizeUserSaga(username, email, password) {
   try {

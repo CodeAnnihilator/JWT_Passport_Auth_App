@@ -7,7 +7,7 @@ const Button = ({ label, onClick, isDisabled }) => {
   return (
     <button
       className={ cn(styles.button, isDisabled ? styles.disabled : '') }
-      onClick={ isDisabled ? '' : onClick}
+      onClick={onClick}
     >{ label }</button>
   )
 }

@@ -1,25 +1,7 @@
 {
-  "extends": [
-    "eslint:recommended",
-    "plugin:import/errors",
-    "plugin:import/warnings"
-  ],
-  "plugins": [
-    "react"
-  ],
   "parser": "babel-eslint",
-  "parserOptions": {
-    "sourceType": "module",
-    "allowImportExportEverywhere": false,
-    "codeFrame": false
-  },
-  "env": {
-    "es6": true,
-    "browser": true,
-    "node": true,
-    "jquery": true,
-    "mocha": true
-  },
+  "extends": "eslint:recommended",
+  "plugins": [ "react", "import" ],
   "rules": {
     "quotes": 0,
     "no-console": 0,
@@ -64,5 +46,16 @@
     "react/self-closing-comp": 1,
     "react/sort-comp": 1,
     "react/wrap-multilines": 0
+  },
+  "settings": {
+    "import/resolve": {
+      "extensions": [ ".es6", ".js", ".jsx" ]
+    },
+    "import/parser": "babel-eslint"
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
   }
 }

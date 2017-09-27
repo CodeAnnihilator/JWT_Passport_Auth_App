@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import styles from './styles.css'
-import Input from 'src/partials/Input/Input'
-import Button from 'src/partials/Button/Button'
+import Input from '@src/partials/Input/Input'
+import Button from '@src/partials/Button/Button'
 
 export default class Registration extends Component {
   constructor() {

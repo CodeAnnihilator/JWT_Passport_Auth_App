@@ -4,7 +4,7 @@ import {
   LOGIN_PENDING,
   LOGIN_SUCCESS,
   AUTH_TOKEN_SUCCESS
-} from 'src/components/Auth/Login/loginActions'
+} from '@src/components/Auth/Login/loginActions'
 
 // import {
 //   REGISTRATE_PENDING
@@ -20,11 +20,11 @@ const initialState = {
 }
 
 export default typeToReducer({
-  [ LOGIN_PENDING ]: (state, { isPending, inProgressMessage, descriptionMessage }) => ({
+  [ LOGIN_PENDING ]: (state, { payload }) => ({
     ...state,
-    authPending: isPending,
-    inProgressMessage,
-    descriptionMessage
+    authPending: payload.isPending,
+    inProgressMessage: payload.inProgressMessage,
+    descriptionMessage: payload.descriptionMessage
   }),
   // [ REGISTRATE_PENDING ]: (state, { isPending, inProgressMessage, descriptionMessage }) => ({
   //   ...state,
@@ -32,14 +32,11 @@ export default typeToReducer({
   //   inProgressMessage,
   //   descriptionMessage
   // }),
-  [ LOGIN_SUCCESS ]: (state, { user: { username, email } }) => ({
+  [ LOGIN_SUCCESS ]: (state, { payload }) => ({
     ...state,
     isAuthenticated: true,
-    username,
-    email
+    username: payload.user.username,
+    email: payload.user.email
   }),
-  [ AUTH_TOKEN_SUCCESS ]: state => ({
-    ...state,
-    isAuthenticated: true
-  })
+  [ AUTH_TOKEN_SUCCESS ]: state => ({ ...state, isAuthenticated: true })
 }, initialState)

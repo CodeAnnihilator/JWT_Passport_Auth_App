@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Input from 'src/partials/Input/Input'
-import Button from 'src/partials/Button/Button'
+import Input from '@src/partials/Input/Input'
+import Button from '@src/partials/Button/Button'
 import styles from './styles.css'
 
 export default class Login extends Component {

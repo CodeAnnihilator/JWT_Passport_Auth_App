@@ -3,30 +3,24 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 export default function(ComposedComponent) {
-
   class RequireAuthHOC extends Component {
-    static propTypes = {
-      history: PropTypes.object.isRequired,
-      isAuthenticated: React.PropTypes.bool.isRequired
-    }
     componentWillMount() {
-      if (!this.props.isAuthenticated) {
-        this.props.history.push('/login')
+      // NOTE: with react fiber prop-types module is not working correctly with HOC props
+      if (!this.props.isAuthenticated) { // eslint-disable-line
+        // this.props.history.push('/login') // eslint-disable-line
       }
     }
     componentWillUpdate(nextProps) {
       if(!nextProps.isAuthenticated) {
-        nextProps.history.push('/login')
+        // nextProps.history.push('/login')
       }
     }
     render() {
       return <ComposedComponent {...this.props} />
     }
   }
-
-  function mapStateToProps(state) {
-    return { isAuthenticated: state.auth.isAuthenticated }
-  }
-
+  const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated
+  })
   return connect(mapStateToProps)(RequireAuthHOC)
 }

@@ -7,7 +7,7 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import { configureStore, history } from './store/configureStore'
 import './styles/styles.css'
 
-import { authTokenSuccess } from 'src/components/Auth/Login/loginActions'
+import { authTokenSuccess } from '@src/components/Auth/Login/loginActions'
 import Routes from './routes'
 
 import Cookies from 'universal-cookie'

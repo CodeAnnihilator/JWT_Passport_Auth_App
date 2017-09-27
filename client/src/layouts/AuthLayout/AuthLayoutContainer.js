@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import AuthLayoutComponent from './AuthLayoutComponent'
+import AuthLayout from './AuthLayout'
 
 const mapStateToProps = state => ({
   authPending: state.auth.authPending,
@@ -11,4 +11,4 @@ const mapStateToProps = state => ({
   email: state.auth.email
 })
 
-export default connect(mapStateToProps)(AuthLayoutComponent)
+export default connect(mapStateToProps)(AuthLayout)

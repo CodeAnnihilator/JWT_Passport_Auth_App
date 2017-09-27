@@ -6,9 +6,9 @@ const DAEMON = true
 import Cookies from 'universal-cookie'
 const cookies = new Cookies()
 
-import { LOGIN, AUTH_TOKEN_SUCCESS } from 'src/components/Auth/Login/loginActions'
-import { loginPending, loginSuccess } from 'src/components/Auth/Login/loginActions'
-import { authorizeUser, authenticateToken } from 'src/components/Auth/Login/loginApi'
+import { LOGIN, AUTH_TOKEN_SUCCESS } from '@src/components/Auth/Login/loginActions'
+import { loginPending, loginSuccess } from '@src/components/Auth/Login/loginActions'
+import { authorizeUser, authenticateToken } from '@src/components/Auth/Login/loginApi'
 
 function delay(ms) {
   return new Promise(resolve => setTimeout(() => resolve(true), ms))

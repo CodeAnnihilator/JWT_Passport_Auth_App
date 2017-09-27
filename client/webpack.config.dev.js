@@ -18,8 +18,8 @@ export default {
   },
   resolve: {
     alias: {
-      src: path.resolve(__dirname, './src'),
-      images: path.join(__dirname, './src/assets/images')
+      '@src': path.resolve(__dirname, './src'),
+      '@images': path.resolve(__dirname, './src/assets/images')
     },
     extensions: [".js", ".css"]
   },
