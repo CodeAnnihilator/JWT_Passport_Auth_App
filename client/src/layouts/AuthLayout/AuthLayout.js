@@ -22,5 +22,5 @@ export default class AuthLayout extends Component {
 }
 
 AuthLayout.propTypes = {
-  children: PropTypes.array.isRequired
+  children: PropTypes.object.isRequired
 }

@@ -3,7 +3,8 @@ import typeToReducer from 'type-to-reducer'
 import {
   LOGIN_PENDING,
   LOGIN_SUCCESS,
-  AUTH_TOKEN_SUCCESS
+  AUTH_TOKEN_SUCCESS,
+  LOGIN_ERROR
 } from '@src/components/Auth/Login/loginActions'
 
 import {
@@ -12,6 +13,7 @@ import {
 
 const initialState = {
   authPending: false,
+  authTokenPending: true,
   inProgressMessage: '',
   descriptionMessage: '',
   isAuthenticated: false,
@@ -29,11 +31,13 @@ export default typeToReducer({
   [ LOGIN_SUCCESS ]: (state, { payload }) => ({
     ...state,
     isAuthenticated: true,
+    authTokenPending: false,
     username: payload.username
   }),
-  [ AUTH_TOKEN_SUCCESS ]: state => ({
+  [ LOGIN_ERROR ]: state => ({
     ...state,
-    isAuthenticated: true
+    isAuthenticated: false,
+    authTokenPending: false
   }),
   [ REGISTRATE_PENDING ]: (state, { payload }) => ({
     ...state,

@@ -30,3 +30,7 @@ render(
 if (token) {
   store.dispatch(authTokenSuccess(token))
 }
+
+if (module.hot) {
+  module.hot.accept()
+}
