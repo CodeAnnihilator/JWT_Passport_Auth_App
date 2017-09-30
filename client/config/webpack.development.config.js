@@ -23,7 +23,8 @@ export default {
   resolve: {
     alias: {
       '@src': path.resolve(__dirname, '../src'),
-      '@images': path.resolve(__dirname, '../src/assets/images')
+      '@images': path.resolve(__dirname, '../src/assets/images'),
+      '@rc-slider': path.resolve(__dirname, '../../node_modules/rc-slider/assets/')
     },
     extensions: ['.js']
   },
@@ -34,12 +35,14 @@ export default {
 			exclude: /node_modules/
 		}, {
 			test: /\.(png|jpg|gif)$/,
-			loaders: ['url-loader?limit=10000&name=images/[hash:12].[ext]'],
-			exclude: /node_modules/
+			loaders: ['url-loader?limit=10000&name=images/[hash:12].[ext]']
 		}, {
-			test: /\.css$/,
-			loaders: [ 'style-loader', 'css-loader?localIdentName=[path][name]---[local]' ],
-			exclude: /node_modules/
+			test: /\.s?css$/,
+      exclude: /module\.s?css$/,
+			loaders: [ 'style-loader', 'css-loader?modules=false&localIdentName=[path][name]---[local]!sass-loader' ],
+		},{
+			test: /module\.s?css$/,
+			loaders: [ 'style-loader', 'css-loader?modules=true&localIdentName=[path][name]---[local]!sass-loader' ]
 		}]
 	},
   output: {
