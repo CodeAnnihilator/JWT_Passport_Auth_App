@@ -31,6 +31,8 @@ if (token) {
   store.dispatch(authTokenSuccess(token))
 }
 
-if (module.hot) {
-  module.hot.accept()
+if (process.env.NODE_ENV === 'development') {
+  if (module.hot) {
+    module.hot.accept()
+  }
 }

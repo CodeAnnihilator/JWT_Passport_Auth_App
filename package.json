@@ -3,11 +3,9 @@
   "version": "1.0.0",
   "description": "JWT Passport Authentication",
   "scripts": {
-    "client": "npm-run-all --parallel open:src lint:watch",
-    "open:src": "babel-node client/dev-server.js",
-    "lint": "node_modules/.bin/esw client/webpack.config.* client/src client/tools",
-    "lint:init": "./node_modules/.bin/eslint --init",
-    "lint:watch": "npm run lint -- --watch",
+    "serve": "babel-node ./client/scripts/entry.js --serve",
+    "dev": "babel-node ./client/scripts/entry.js --dev",
+    "build": "babel-node ./client/scripts/entry.js --build",
     "server": "babel-node server/server.js --exec babel-node --presets es2015"
   },
   "dependencies": {
@@ -21,7 +19,10 @@
     "copy-webpack-plugin": "^4.0.1",
     "history": "^4.7.2",
     "jsonwebtoken": "^8.0.1",
+    "koa": "^2.3.0",
+    "koa-static": "^4.0.1",
     "morgan": "^1.9.0",
+    "node-env-file": "^0.1.8",
     "passport": "^0.4.0",
     "passport-jwt": "^3.0.0",
     "prop-types": "^15.6.0",
@@ -40,7 +41,8 @@
     "resolve-url-loader": "^2.1.0",
     "type-to-reducer": "^1.0.4",
     "uniqid": "^4.1.1",
-    "universal-cookie": "^2.1.0"
+    "universal-cookie": "^2.1.0",
+    "yargs": "^9.0.1"
   },
   "devDependencies": {
     "babel-cli": "6.26.0",

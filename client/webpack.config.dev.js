@@ -3,18 +3,17 @@ import webpack from 'webpack'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import HTMLWebpackPlugin from 'html-webpack-plugin'
 
-const DEVELOPMENT = true // process.env.NODE_ENV === 'development'
-const PRODUCTION = false // process.env.NODE_ENV === 'production'
+const IS_PRODUCTION = false
 
-const entry = PRODUCTION
+const entry = IS_PRODUCTION
   ? [ path.join(__dirname, 'src/index.js') ]
   : [
     'webpack/hot/dev-server',
-    'webpack-dev-server/client?http://localhost:8080',
+    'webpack-dev-server/client?http://localhost:3000',
     path.join(__dirname, 'src/index.js')
   ]
 
-const plugins = PRODUCTION
+const plugins = IS_PRODUCTION
   ? [
     new webpack.optimize.UglifyJsPlugin(),
     new ExtractTextPlugin('style-[contenthash:10].css'),
@@ -24,16 +23,17 @@ const plugins = PRODUCTION
   ]
   : [ new webpack.HotModuleReplacementPlugin() ]
 
-plugins.push(
-  new webpack.DefinePlugin({
-    DEVELOPMENT: JSON.stringify(DEVELOPMENT),
-		PRODUCTION: JSON.stringify(PRODUCTION)
-  })
-)
+// plugins.push(
+//   new webpack.DefinePlugin({
+//     'process.env': {
+//         'NODE_ENV': IS_PRODUCTION ? 'production' : ''
+//     }
+//   })
+// )
 
-const cssIdentifier = PRODUCTION ? '[hash:base64:10]' : '[path][name]---[local]'
+const cssIdentifier = IS_PRODUCTION ? '[hash:base64:10]' : '[path][name]---[local]'
 
-const cssLoader = PRODUCTION
+const cssLoader = IS_PRODUCTION
   ? ExtractTextPlugin.extract({ loader: 'css-loader?minimize&localIdentName=' + cssIdentifier })
   : [ 'style-loader', 'css-loader?localIdentName=' + cssIdentifier ]
 
@@ -65,8 +65,8 @@ export default {
 	},
   output: {
     path: path.resolve(__dirname, 'dist'),
-		publicPath: PRODUCTION ? '/' : '/dist/',
-		filename: PRODUCTION ? 'bundle.[hash:12].min.js' : 'bundle.js'
+		publicPath: IS_PRODUCTION ? '/' : '/dist/',
+		filename: IS_PRODUCTION ? 'bundle.[hash:12].min.js' : 'bundle.js'
 	}
 }
 
