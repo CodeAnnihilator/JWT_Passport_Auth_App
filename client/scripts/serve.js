@@ -1,17 +1,17 @@
 import '../config/environment'
 
-import http from 'http'
-import koa from 'koa'
 import open from 'open'
-import serve from 'koa-static'
 import { STATIC } from '../config/paths'
 
-const app = new koa()
+import path from 'path'
+import express from 'express'
+const app = express()
+app.use(express.static(STATIC))
 
-app.use(serve(STATIC))
+app.get('*', function (req, res){
+  res.sendFile(path.join(STATIC, 'index.html'))
+})
 
-const server = http.createServer(app.callback())
-
-server.listen(process.env.PORT, 'localhost', function() {
+app.listen(process.env.PORT, function() {
   open(`${process.env.FETCHURL}:${process.env.PORT}`)
 })
