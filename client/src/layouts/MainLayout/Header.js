@@ -6,6 +6,7 @@ import cn from 'classnames'
 import Button from '@src/partials/Button/Button'
 import styles from './styles.module.scss'
 import logo from './images/logo.png'
+import Range from '@src/components/Range/'
 
 export default class Header extends Component {
   render() {
@@ -52,6 +53,30 @@ export default class Header extends Component {
             <span className={styles.hello__user}>{ userName }</span>
           </div>
           <Button onClick={() => console.log('logout')} label='logout' styleType='logout' />
+        </div>
+      </div>
+
+
+
+      <div className={cn(styles.header__line, styles.background, styles.background_black)}>
+        <div className={styles.header__line__item}>
+          <div className={styles.range}>
+            <div className={styles.range__title}>
+              PRICE RANGE:
+              <span className={styles.range__title__price}> 1200</span>
+              <span className={styles.range__title__description}> RUR to</span>
+              <span className={styles.range__title__price}> 2000</span>
+              <span className={styles.range__title__description}> RUR</span>
+            </div>
+            <Range />
+          </div>
+        </div>
+        <div className={styles.header__line__item}>
+          <div className={styles.sort_by}>SORT BY</div>
+          <select className={styles.sort}>
+            <option>PRICE DESCENDING</option>
+            <option>PRICE ASCENDING</option>
+          </select>
         </div>
       </div>
     </div>

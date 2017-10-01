@@ -56,6 +56,7 @@ $max-width-window: 80%;
 }
 
 .header {
+  z-index: 999;
   position: fixed;
   left: 0;
   right: 0;
@@ -74,7 +75,7 @@ $max-width-window: 80%;
           left: 0;
           bottom: 11px;
           width: 1px;
-          border: 1px solid #161212;
+          border: 1px solid #252323;
           border-top: none;
           border-bottom: none;
         }
@@ -101,5 +102,39 @@ $max-width-window: 80%;
   &__user {
     font-size: 16px;
     color: #d93c3c;
+  }
+}
+
+.sort {
+  width: 150px;
+  height: 45px;
+  color: #484848;
+  background-color: #181818;
+  border: none;
+  outline: none;
+  margin: 10px 0;
+  &_by {
+    color: #484848;
+    font-sise: 12px;
+    margin: 0 15px 0 35px;
+  }
+}
+
+.range {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 40px;
+  &__title {
+    color: #564a4a;
+    font-size: 12px;
+    &__price {
+      font-size: 14px;
+      color: #f5aeae;
+    }
+    &__description {
+      font-size: 14px;
+      color: #eb6e6e;
+    }
   }
 }
