@@ -1,5 +1,4 @@
 import { take, call, fork, put } from 'redux-saga/effects'
-// import { browserHistory } from 'react-router'
 
 const DAEMON = true
 
@@ -20,7 +19,6 @@ function* authorizeUserSaga(username, email, password) {
     cookies.set('token', token, { path: '/' })
     yield put(loginSuccess(username))
     yield put(loginPending(false, 'success', `Wow, you have successfully logged in, ${username}!`))
-    // browserHistory.push('/')
   } catch (e) {
     console.log(e)
   }
