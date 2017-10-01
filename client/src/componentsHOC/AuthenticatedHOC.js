@@ -3,17 +3,17 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Route, withRouter } from 'react-router-dom'
 
-class PrivateRoute extends Component {
+class AuthenticatedHOC extends Component {
   componentWillMount() {
     const { authPending, isAuthenticated } = this.props
-    if(!authPending && !isAuthenticated) {
-      this.props.history.push('/login')
+    if(!authPending && isAuthenticated) {
+      this.props.history.push('/')
     }
   }
   componentWillReceiveProps(nextProps) {
     const { authPending, isAuthenticated } = nextProps
-    if(!authPending && !isAuthenticated) {
-      nextProps.history.push('/login')
+    if(!authPending && isAuthenticated) {
+      nextProps.history.push('/')
     }
   }
   render() {
@@ -21,7 +21,7 @@ class PrivateRoute extends Component {
     const { isAuthenticated, authPending } = this.props
     return (
       <Route { ...rest }
-        render={ props => isAuthenticated
+        render={ props => (!authPending && !isAuthenticated)
           ? <Component { ...props } />
           : <div />
         }
@@ -30,11 +30,11 @@ class PrivateRoute extends Component {
   }
 }
 
-PrivateRoute.propTypes = {
+AuthenticatedHOC.propTypes = {
   authPending: PropTypes.bool,
-  component: PropTypes.func,
+  component: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
-  history: PropTypes.object
+  history: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -42,4 +42,4 @@ const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 })
 
-export default withRouter(connect(mapStateToProps)(PrivateRoute))
+export default withRouter(connect(mapStateToProps)(AuthenticatedHOC))

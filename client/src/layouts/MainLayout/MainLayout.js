@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styles from './styles.module.scss'
-import Header from './Header'
+import HeaderContainer from '@src/components/Header/HeaderContainer'
 
 export default class MainLayout extends Component {
   render() {
     return (
       <div className={styles.page_wrapper}>
-        <Header userName='Mary'/>
+        <HeaderContainer />
         <div className={styles.page_width}>
           <div className={styles.layout}>
             { this.props.children }

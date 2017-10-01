@@ -1,14 +1,25 @@
 import { take, call, put, fork, select } from 'redux-saga/effects'
-import { push } from 'react-router-redux'
 
 const DAEMON = true
 
 import Cookies from 'universal-cookie'
 const cookies = new Cookies()
 
-import { LOGIN, AUTH_TOKEN_SUCCESS } from '@src/components/Auth/Login/loginActions'
-import { loginPending, loginSuccess, loginError } from '@src/components/Auth/Login/loginActions'
-import { authorizeUser, authenticateToken } from '@src/components/Auth/Login/loginApi'
+import {
+  AUTH_TOKEN_SUCCESS,
+  LOGIN,
+  LOGOUT
+} from '@src/components/Auth/Login/loginActions'
+import {
+  loginPending,
+  loginSuccess,
+  loginError,
+  logoutSuccess
+} from '@src/components/Auth/Login/loginActions'
+import {
+  authorizeUser,
+  authenticateToken
+} from '@src/components/Auth/Login/loginApi'
 
 function delay(ms) {
   return new Promise(resolve => setTimeout(() => resolve(true), ms))
@@ -24,15 +35,24 @@ function* authorizeTokenSaga() {
       yield put(loginSuccess(user.username))
       yield put(loginPending(false, 'success', 'Wow, you have successfully logged in!'))
     } catch (e) {
+      cookies.remove('token')
       yield put(loginError())
-      // yield put(push('/login'))
       console.log(e)
     }
   }
 }
 
+function* logoutSaga() {
+  while (DAEMON) {
+    yield take(LOGOUT)
+    yield cookies.remove('token')
+    yield put(logoutSuccess())
+  }
+}
+
 export default function* authorizeUserSaga() {
   yield fork(authorizeTokenSaga)
+  yield fork(logoutSaga)
   while (DAEMON) {
     const { payload: { email, password } } = yield take(LOGIN)
     try {
@@ -41,7 +61,6 @@ export default function* authorizeUserSaga() {
       yield put(loginSuccess(user.username))
       yield put(loginPending(false, 'success', 'Wow, you have successfully logged in!'))
       cookies.set('token', token, { path: '/' })
-      // yield put(push('/'))
     } catch (e) {
       console.log(e)
     }

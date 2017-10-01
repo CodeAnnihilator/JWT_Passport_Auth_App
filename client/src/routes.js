@@ -10,25 +10,26 @@ import RegistrateContainer from './components/Auth/Registration/RegistrationCont
 import PageNotFound from './components/PageNotFound/PageNotFound'
 import Test from '@src/components/Test/Test'
 
+import PrivateRoute from './componentsHOC/RequireAuthHOC'
+import AuthRoute from './componentsHOC/AuthenticatedHOC'
+
 import CategoriesComponent from '@src/components/Categories/CategoriesComponent'
 import CategoryComponent from '@src/components/Category/CategoryComponent'
 import ProductComponent from '@src/components/Product/ProductComponent'
 
 const Routes = () => (
-  <main>
-    <MainLayout>
-      <Switch>
-        <Redirect exact from='/' to='/categories'/>
-        <Route exact path='/categories' render={() => <CategoriesComponent />} />
-        <Route exact path='/categories/test' render={() => <Test />} />
-        <Route exact path='/categories/:cat_id' render={() => <CategoryComponent />} />
-        <Route exact path='/categories/:cat_id/products/:prod_id' render={() => <ProductComponent />} />
-        <Route exact path='/login' render={() => <AuthLayout><LoginContainer /></AuthLayout>} />
-        <Route exact path='/registration' render={() => <AuthLayout><RegistrateContainer /></AuthLayout>} />
-        <Route component={PageNotFound} />
-      </Switch>
-    </MainLayout>
-  </main>
+  <MainLayout>
+    <Switch>
+      <Redirect exact from='/' to='/categories'/>
+      <PrivateRoute exact path='/categories' component={() => <CategoriesComponent />} />
+      <PrivateRoute exact path='/categories/test' component={() => <Test />} />
+      <PrivateRoute exact path='/categories/:cat_id' component={() => <CategoryComponent />} />
+      <PrivateRoute exact path='/categories/:cat_id/products/:prod_id' component={() => <ProductComponent />} />
+      <AuthRoute exact path='/login' component={() => <AuthLayout><LoginContainer /></AuthLayout>} />
+      <AuthRoute exact path='/registration' component={() => <AuthLayout><RegistrateContainer /></AuthLayout>} />
+      <Route component={PageNotFound} />
+    </Switch>
+  </MainLayout>
 )
 
 export default Routes
