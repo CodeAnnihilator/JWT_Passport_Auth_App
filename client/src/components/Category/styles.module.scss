@@ -1,0 +1,63 @@
+.tea {
+  padding: 35px 30px;
+  height: 400px;
+  width: 280px;
+  box-sizing: border-box;
+  background-color: rgba(225, 225, 225, .7);
+  margin: 5px;
+  color: #8a8a8a;
+  text-decoration: none;
+  border-bottom: 5px solid rgba(0,0,0,0);  
+  &__title {
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    &__img {
+      align-self: center;
+      opacity: 0.7;
+    }
+    &__text {
+      font-size: 13px;
+      text-align: center;
+    }
+    &__price {
+      position: absolute;
+      top: 30px;
+      right: -30px;
+      color: #fff;
+      padding: 13px 20px;
+    }
+  }
+  &__text {
+    margin-top: 30px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+  &:hover {
+    border-color: #d93c3c;
+    .tea__title__img {
+      opacity: 1;
+    }
+  }
+}
+
+.background {
+  &_orange {
+    background-color: #ed9757;
+  }
+  &_red {
+    background-color: #ed5757;
+  }
+  &_green {
+    background-color: #74ce2c;
+  }
+}
+
+.teas {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
