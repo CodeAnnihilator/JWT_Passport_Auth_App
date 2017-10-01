@@ -87,6 +87,7 @@ export default class Registration extends Component {
         <Button onClick={() => registerUser(username, email, password)}
           isDisabled={!formValid}
           label='register'
+          styleType='auth'
         />
       </div>
     )

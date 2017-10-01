@@ -18,7 +18,7 @@ $max-width-window: 80%;
 }
 
 .page_wrapper {
-  background: url('../../assets/images/tea_bg.jpg');
+  background: url('@images/tea_bg.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
@@ -74,8 +74,7 @@ $max-width-window: 80%;
           left: 0;
           bottom: 11px;
           width: 1px;
-          border-color: #130f0f;
-          border: 2px solid;
+          border: 1px solid #161212;
           border-top: none;
           border-bottom: none;
         }

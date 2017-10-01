@@ -3,11 +3,14 @@
   height: 600px;
   border-radius: 4px;
   background: rgba(53, 60, 74, 0.95);
+  width: 76%;
+  min-width: 700px;
+  margin: 0 auto;
 }
 
 :local(.form_wrapper) {
   display: flex;
-  width: 420px;
+  width: 50%;
   flex-direction: column;
 }
 

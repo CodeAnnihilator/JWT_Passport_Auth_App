@@ -1,77 +1,76 @@
 .categories {
-    width: 90%;
-    margin: 0 5%;
-    height: 510px;
-    background-image: url('./images/bg.png');
-    background-repeat: round;
-    display: flex;
+  width: 90%;
+  margin: 0 5%;
+  background-image: url('./images/bg.png');
+  background-repeat: round;
+  display: flex;
 }
 .category {
-    box-sizing: border-box;
-    width: 25%;
-    height: 100%;
-    box-shadow: 10px 14px 36px -5px rgba(0,0,0,0.29);
-    padding: 55px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    color: #9a8691;
-    text-decoration: none;
-    border-bottom: 5px solid rgba(0,0,0,0);
-    &:hover {
-        border-color: #d93c3c;
-    }
+  box-sizing: border-box;
+  width: 25%;
+  height: 100%;
+  box-shadow: 10px 14px 36px -5px rgba(0,0,0,0.29);
+  padding: 55px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: #9a8691;
+  text-decoration: none;
+  border-bottom: 5px solid rgba(0,0,0,0);
+  &:hover {
+    border-color: #d93c3c;
+  }
 }
 
 .color {
-    &_white {
-        background-color: #ffffff;
-        color: #9a8691;
-        .dot {
-            background-color: #d93c3c;
-        }
+  &_white {
+    background-color: #ffffff;
+    color: #9a8691;
+    .dot {
+      background-color: #d93c3c;
     }
-    &_begue {
-        background-color: #e5dad7;
-        .dot {
-            background-color: #ffffff;
-        }
+  }
+  &_begue {
+    background-color: #e5dad7;
+    .dot {
+      background-color: #ffffff;
     }
-    &_dark_perple {
-        background-color: rgba(45, 35, 44, .7);
-        .dot {
-            background-color: #d93c3c;
-        }
+  }
+  &_dark_perple {
+    background-color: rgba(45, 35, 44, .7);
+    .dot {
+      background-color: #d93c3c;
     }
-    &_perple {
-        background-color: rgba(72, 61, 71, .7);
-        .dot {
-            background-color: #ae9b9f;
-        }
+  }
+  &_perple {
+    background-color: rgba(72, 61, 71, .7);
+    .dot {
+      background-color: #ae9b9f;
     }
+  }
 }
 
 .box_image {
-    height: 120px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    &__img {
-        align-self: center;
-    }
-    &__text {
-        font-size: 30px;
-    }
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  &__img {
+    align-self: center;
+  }
+  &__text {
+    font-size: 30px;
+  }
 }
 
 .text {
-    line-height: 22px;
-    text-align: center;
+  line-height: 22px;
+  text-align: center;
 }
 
 .dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    margin: 17px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin: 17px;
 }
