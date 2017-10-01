@@ -1,0 +1,37 @@
+.button {
+  font-family: Calibri;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  margin: 20px;
+  &_auth {
+    background-color: #50dfe4;
+    color: #2b8386;
+    align-self: center;
+    padding: 15px 80px;
+    border-radius: 30px;
+    &:disabled {
+      color: #454d5d;
+      background-color: #313640;
+      cursor: default;
+      &:hover {
+        background-color: #313640;
+      }
+    }
+    &:hover {
+      background-color: rgba(80, 223, 228, 0.82);
+    }
+  }
+  &_logout {
+    background-color: #d93c3c;
+    color: #fac2c2;
+    padding: 15px 30px;
+    border-radius: 5px;
+    &:hover {
+      background-color: #d9534f;
+    }
+  }
+}
