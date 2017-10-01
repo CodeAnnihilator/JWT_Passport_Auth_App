@@ -1,0 +1,22 @@
+
+.range_config {
+  width: 550px;
+}
+
+.range_config .rc-slider-track {
+  background-color: #353536;
+  z-index: 1;
+}
+
+.range_config .rc-slider-handle {
+  border-color: #d73e41;
+  background-color: #d73e41;
+  z-index: 2;
+}
+.range_config .rc-slider-handle:active {
+  box-shadow: none;
+}
+
+.range_config .rc-slider-step {
+  background-color: #a54e4e;
+}

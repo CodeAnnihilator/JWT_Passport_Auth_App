@@ -8,7 +8,6 @@ import AuthLayout from '@src/layouts/AuthLayout/AuthLayout'
 import LoginContainer from '@src/components/Auth/Login/LoginContainer'
 import RegistrateContainer from './components/Auth/Registration/RegistrationContainer'
 import PageNotFound from './components/PageNotFound/PageNotFound'
-import Test from '@src/components/Test/Test'
 
 import CategoriesComponent from '@src/components/Categories/CategoriesComponent'
 import CategoryComponent from '@src/components/Category/CategoryComponent'
@@ -20,7 +19,6 @@ const Routes = () => (
       <Switch>
         <Redirect exact from='/' to='/categories'/>
         <Route exact path='/categories' render={() => <CategoriesComponent />} />
-        <Route exact path='/categories/test' render={() => <Test />} />
         <Route exact path='/categories/:cat_id' render={() => <CategoryComponent />} />
         <Route exact path='/categories/:cat_id/products/:prod_id' render={() => <ProductComponent />} />
         <Route exact path='/login' render={() => <AuthLayout><LoginContainer /></AuthLayout>} />

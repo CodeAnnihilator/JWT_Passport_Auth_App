@@ -1,5 +1,5 @@
 :local(.left_info) {
-  width: 520px;
+  width: 50%;
   border-radius: 4px 0 0 4px;
   background: url('./images/left_info_bg.jpg') no-repeat center center;
   background-size: cover;
