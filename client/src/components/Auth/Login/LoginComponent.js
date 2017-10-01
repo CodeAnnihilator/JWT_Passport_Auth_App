@@ -61,6 +61,7 @@ export default class Login extends Component {
         <Button onClick={() => login(email, password)}
           isDisabled={!formValid}
           label='login'
+          styleType='auth'
         />
       </div>
     )

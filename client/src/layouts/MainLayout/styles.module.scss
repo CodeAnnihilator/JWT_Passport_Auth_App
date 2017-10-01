@@ -1,0 +1,106 @@
+$max-width-window: 80%;
+
+.box_logo {
+  display: flex;
+  align-items: center;
+  margin: 25px 0 30px 0;
+  &__text {
+    margin-left: 17px;
+    margin-bottom: -17px;
+    color: #d93c3c;
+    font-size: 18px;
+    font-weight: bold;
+    &__sub{
+      font-size: 14px;
+      color: #f57373;
+    }
+  }
+}
+
+.page_wrapper {
+  background: url('../../assets/images/tea_bg.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.page_width {
+  width: $max-width-window;
+}
+
+.layout {
+  margin: 200px auto;
+}
+
+.menu {
+  display: flex;
+  &__item {
+    color: #514647;
+    padding: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+      &:hover {
+        color: #dfdfdf;
+      }
+    &_active {
+      color: #dfdfdf;
+    }
+  }
+}
+
+.header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  &__line {
+    display: flex;
+    justify-content: space-around;
+    &__item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      &:nth-child(2) {
+        &:before {
+          content: '';
+          position: absolute;
+          top: 11px;
+          left: 0;
+          bottom: 11px;
+          width: 1px;
+          border-color: #130f0f;
+          border: 2px solid;
+          border-top: none;
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}
+
+.background {
+  padding: 0 10%;
+  &_gray {
+    background-color: #1e1a1a;
+  }
+  &_black {
+    background-color: #0d0d0d;
+  }
+}
+
+.hello {
+  color: #514647;
+  font-size: 14px;
+  font-weight: bold;
+  margin-left: 60px;
+  &__user {
+    font-size: 16px;
+    color: #d93c3c;
+  }
+}
