@@ -5,7 +5,7 @@ import cupImg from './images/cup.png'
 import githubImg from './images/github.png'
 
 const links = {
-  github: 'https://github.com/CodeAnnihilator/tokenBasedAuthApp',
+  github: 'https://github.com/Agroil92/JWT_Passport_Auth_App',
   vk: 'https://vk.com/agroil_92'
 }
 
@@ -27,12 +27,12 @@ const LeftSideDescription = () => {
         <img className={styles.github} src={githubImg}/>
         <span>
           <span className={styles.github_description}>Source code for this app:</span><br />
-          <a href={links.github} className={styles.github_link}>{ links.github }</a>
+          <a href={links.github} target='_blank' className={styles.github_link}>{ links.github }</a>
         </span>
       </div>
       <span className={styles.copyright_wrapper}>
         <span className={styles.copyright}>2017 created by </span>
-        <a href={links.vk} className={styles.author_link}>Nick Pyatibratov</a>
+        <a href={links.vk} target='_blank' className={styles.author_link}>Nick Pyatibratov</a>
       </span>
     </div>
   )

@@ -8,7 +8,6 @@ import AuthLayout from '@src/layouts/AuthLayout/AuthLayout'
 import LoginContainer from '@src/components/Auth/Login/LoginContainer'
 import RegistrateContainer from './components/Auth/Registration/RegistrationContainer'
 import PageNotFound from './components/PageNotFound/PageNotFound'
-import Test from '@src/components/Test/Test'
 
 import PrivateRoute from './componentsHOC/RequireAuthHOC'
 import AuthRoute from './componentsHOC/AuthenticatedHOC'
@@ -22,7 +21,6 @@ const Routes = () => (
     <Switch>
       <Redirect exact from='/' to='/categories'/>
       <PrivateRoute exact path='/categories' component={() => <CategoriesComponent />} />
-      <PrivateRoute exact path='/categories/test' component={() => <Test />} />
       <PrivateRoute exact path='/categories/:cat_id' component={() => <CategoryComponent />} />
       <PrivateRoute exact path='/categories/:cat_id/products/:prod_id' component={() => <ProductComponent />} />
       <AuthRoute exact path='/login' component={() => <AuthLayout><LoginContainer /></AuthLayout>} />
