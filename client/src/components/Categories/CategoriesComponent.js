@@ -20,7 +20,7 @@ export default class Categories extends Component {
 				<Link to='/categories/1' className={ cn(styles.category, styles.color_white) }>
 					<div className={styles.box_image}>
 						<img src={forma1} className={styles.box_image__img} />
-						<div className={styles.box_image__text}>Teaware</div>
+						<div className={styles.box_image__text} style={{ color: '#d56464' }}>Teaware</div>
 					</div>
 					<div className={styles.dot}/>
 					<div className={styles.text}>{ catText.text1 }</div>
@@ -30,7 +30,7 @@ export default class Categories extends Component {
 				<Link to="/categories/2" className={ cn(styles.category, styles.color_begue) }>
 					<div className={styles.box_image}>
 						<img src={forma2} className={styles.box_image__img} />
-						<div className={styles.box_image__text}>Pu Erh Tea</div>
+						<div className={styles.box_image__text} style={{ color: '#755c70' }}>Pu Erh Tea</div>
 					</div>
 					<div className={styles.dot}/>
 					<div className={styles.text}>{ catText.text1 }</div>
@@ -40,7 +40,7 @@ export default class Categories extends Component {
 				<Link to="/categories/3" className={ cn(styles.category, styles.color_dark_perple) }>
 					<div className={styles.box_image}>
 						<img src={forma3} className={styles.box_image__img} />
-						<div className={styles.box_image__text}>Green Tea</div>
+						<div className={styles.box_image__text} style={{ color: '#ae9b9f' }}>Green Tea</div>
 					</div>
 					<div className={styles.dot}/>
 					<div className={styles.text}>{ catText.text1 }</div>
@@ -50,7 +50,7 @@ export default class Categories extends Component {
 				<Link to="/categories/4" className={ cn(styles.category, styles.color_perple) }>
 					<div className={styles.box_image}>
 						<img src={forma4} className={styles.box_image__img} />
-						<div className={styles.box_image__text}>Black Tea</div>
+						<div className={styles.box_image__text} style={{ color: '#948192' }}>Black Tea</div>
 					</div>
 					<div className={styles.dot}/>
 					<div className={styles.text}>{ catText.text1 }</div>

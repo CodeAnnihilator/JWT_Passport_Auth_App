@@ -1,6 +1,7 @@
 .categories {
   width: 90%;
-  margin: 0 5%;
+  max-width: 1000px;
+  margin: 0 auto;
   background-image: url('./images/bg.png');
   background-repeat: round;
   display: flex;
@@ -10,7 +11,7 @@
   width: 25%;
   height: 100%;
   box-shadow: 10px 14px 36px -5px rgba(0,0,0,0.29);
-  padding: 55px;
+  padding: 70px 25px 70px 25px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -27,7 +28,7 @@
     background-color: #ffffff;
     color: #9a8691;
     .dot {
-      background-color: #d93c3c;
+      background-color: #f8603f;
     }
   }
   &_begue {
@@ -39,13 +40,13 @@
   &_dark_perple {
     background-color: rgba(45, 35, 44, .7);
     .dot {
-      background-color: #d93c3c;
+      background-color: #ae9b9f;
     }
   }
   &_perple {
     background-color: rgba(72, 61, 71, .7);
     .dot {
-      background-color: #ae9b9f;
+      background-color: #ec6d6d;
     }
   }
 }
@@ -60,11 +61,14 @@
   }
   &__text {
     font-size: 30px;
+    font-family: 'ChopinScript'
   }
 }
 
 .text {
   line-height: 22px;
+  font-family: tahoma;
+  font-size: 11px;
   text-align: center;
 }
 

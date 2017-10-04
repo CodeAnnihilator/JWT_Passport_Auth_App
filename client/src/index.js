@@ -5,7 +5,8 @@ import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'react-router-redux'
 import { BrowserRouter, Route } from 'react-router-dom'
 import { configureStore, history } from './store/configureStore'
-import './styles/styles.css'
+import './styles/global.css'
+import './styles/fonts.css'
 
 import { authTokenSuccess, authTokenError } from '@src/components/Auth/Login/loginActions'
 import Routes from './routes'
@@ -31,10 +32,4 @@ if (token) {
   store.dispatch(authTokenSuccess(token))
 } else {
   store.dispatch(authTokenError())
-}
-
-if (process.env.NODE_ENV === 'development') {
-  if (module.hot) {
-    module.hot.accept()
-  }
 }

@@ -19,5 +19,13 @@ export function configureStore(initialState) {
     )
   )
   store.runSaga = sagaMiddleware.run(rootSaga)
+
+  if (module.hot) {
+    module.hot.accept('../rootReducer', () => {
+      const nextRootReducer = require('../rootReducer')
+      store.replaceReducer(nextRootReducer)
+    })
+  }
+
   return store
 }

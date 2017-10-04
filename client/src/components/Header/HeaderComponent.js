@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import cn from 'classnames'
 
+import SubHeaderComponent from '@src/components/SubHeader/SubHeaderComponent'
 import Button from '@src/partials/Button/Button'
 import styles from './styles.module.scss'
 import logo from './images/logo.png'
@@ -49,12 +50,13 @@ export default class Header extends Component {
           </div>
           <div className={styles.header__line__item}>
             <div className={styles.hello}>
-              <span>hello </span>
+              <span>hello, </span>
               <span className={styles.hello__user}>{ userName }</span>
             </div>
             <Button onClick={logout} label='logout' styleType='logout' />
           </div>
         </div>
+        <SubHeaderComponent />
       </div>
     )
     return isAuthenticated
