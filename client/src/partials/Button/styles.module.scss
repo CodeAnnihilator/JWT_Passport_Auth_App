@@ -7,6 +7,16 @@
   cursor: pointer;
   outline: none;
   margin: 20px;
+  &_back {
+    background-color: #42b8ef;
+    color: #cbe5f1;
+    padding: 11px 30px;
+    border-radius: 5px;
+    margin: 0 0 0 20px !important;
+    &:hover {
+      background-color: #4ec0f5;
+    }
+  }
   &_auth {
     background-color: #50dfe4;
     color: #2b8386;

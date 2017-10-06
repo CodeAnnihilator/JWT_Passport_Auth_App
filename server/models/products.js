@@ -14,6 +14,7 @@ const generateProducts = (categories) => {
       url: path.resolve(__dirname, '../uploadedImages/tea.png'),
       title: randomWords({ min: 2, max: 5, join: ' ' }),
       desc: randomWords({ min: 20, max: 25, join: ' ' }),
+      full_desc: randomWords({ min: 220, max: 350, join: ' ' }),
       price: Math.random() * 10000
     }))
     products = products.concat(preparedProducts)

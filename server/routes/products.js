@@ -10,4 +10,10 @@ productsRouter.get('/products', (req, res) => {
   })
 })
 
+productsRouter.get('/product', (req, res) => {
+  res.status(200).send({
+    product: products.find(el => el.id === req.query.id)
+  })
+})
+
 export default productsRouter

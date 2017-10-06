@@ -7,6 +7,7 @@ import styles from './styles.module.scss'
 const stylesTypes = {
   auth: styles.button_auth,
   logout: styles.button_logout,
+  back: styles.button_back
 }
 
 const Button = ({ label, onClick, isDisabled, styleType }) => (

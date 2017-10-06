@@ -14,17 +14,33 @@ import AuthRoute from './componentsHOC/AuthenticatedHOC'
 
 import CategoriesComponent from '@src/components/Categories/CategoriesComponent'
 import CategoryProductsContainer from '@src/components/CategoryProducts/CategoryProductsContainer'
-import ProductComponent from '@src/components/Product/ProductComponent'
+import CurrentProductContainer from '@src/components/CurrentProduct/CurrentProductContainer'
 
 const Routes = () => (
   <MainLayout>
     <Switch>
       <Redirect exact from='/' to='/categories'/>
-      <PrivateRoute exact path='/categories' component={() => <CategoriesComponent />} />
-      <PrivateRoute exact path='/categories/:cat_id' component={() => <CategoryProductsContainer />} />
-      <PrivateRoute exact path='/categories/:cat_id/products/:prod_id' component={() => <ProductComponent />} />
-      <AuthRoute exact path='/login' component={() => <AuthLayout><LoginContainer /></AuthLayout>} />
-      <AuthRoute exact path='/registration' component={() => <AuthLayout><RegistrateContainer /></AuthLayout>} />
+      <Redirect exact from='/categories/:cat_id/products' to='/categories'/>
+      <PrivateRoute
+        exact path='/categories'
+        component={() => <CategoriesComponent />}
+      />
+      <PrivateRoute
+        exact path='/categories/:cat_id'
+        component={() => <CategoryProductsContainer />}
+      />
+      <PrivateRoute
+        exact path='/categories/:cat_id/products/:prod_id'
+        component={() => <CurrentProductContainer />}
+      />
+      <AuthRoute
+        exact path='/login'
+        component={() => <AuthLayout><LoginContainer /></AuthLayout>}
+      />
+      <AuthRoute
+        exact path='/registration'
+        component={() => <AuthLayout><RegistrateContainer /></AuthLayout>}
+      />
       <Route component={PageNotFound} />
     </Switch>
   </MainLayout>
