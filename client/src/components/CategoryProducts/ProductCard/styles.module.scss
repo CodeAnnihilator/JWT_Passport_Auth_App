@@ -18,8 +18,10 @@
       opacity: 0.7;
     }
     &__text {
-      font-size: 13px;
       text-align: center;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 15px;
     }
     &__price {
       position: absolute;

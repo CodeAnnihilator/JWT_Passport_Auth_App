@@ -3,7 +3,8 @@ import typeToReducer from 'type-to-reducer'
 import {
   GET_CATEGORY_PRODUCTS_SUCCESS,
   SET_CURRENT_PRICE,
-  SET_PRICE
+  SET_PRICE,
+  CHANGE_ORDER
 } from '@src/components/CategoryProducts/categoryProductsActions'
 
 const initialState = {
@@ -20,6 +21,10 @@ export default typeToReducer({
     ...state,
     products: payload.products,
     order: 'asc'
+  }),
+  [ CHANGE_ORDER ]: (state, { payload }) => ({
+    ...state,
+    order: payload.value
   }),
   [ SET_PRICE ]: (state, { payload }) => ({
     ...state,

@@ -32,6 +32,7 @@ class SubHeader extends Component {
     setCurrentPrice(this.state.minCurrentValue, 'currentMinPrice')
     setCurrentPrice(this.state.maxCurrentValue, 'currentMaxPrice')
   }
+  selectOptionChange = e => this.props.changeOrder(e.target.value)
   render() {
     const {
       minPrice,
@@ -60,9 +61,9 @@ class SubHeader extends Component {
         </div>
         <div className={styles.header__line__item} style={{ marginLeft: 25 }}>
           <div className={styles.sort_by}>SORT BY</div>
-          <select className={styles.sort}>
-            <option>PRICE DESCENDING</option>
-            <option>PRICE ASCENDING</option>
+          <select onChange={this.selectOptionChange} className={styles.sort}>
+            <option value='asc'>PRICE ASCENDING</option>
+            <option value='desc'>PRICE DESCENDING</option>
           </select>
         </div>
       </div>
