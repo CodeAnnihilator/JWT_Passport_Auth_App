@@ -3,9 +3,10 @@ import { withRouter } from 'react-router-dom'
 
 import CategoryProductsComponent from './CategoryProductsComponent'
 import { getCategoryProducts } from './categoryProductsActions'
+import { getVisibleProducts } from './categoryProductsSelectors'
 
 const mapStateToProps = state => ({
-  products: state.category_products.products
+  products: getVisibleProducts(state)
 })
 
 const mapDispatchToProps = dispatch => ({

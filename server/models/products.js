@@ -1,6 +1,8 @@
 import uniqid from 'uniqid'
+import randomWords from 'random-words'
 import path from 'path'
 import categories from './categories'
+import sort from '../utils/sort'
 
 const generateProducts = (categories) => {
   let products = []
@@ -10,13 +12,13 @@ const generateProducts = (categories) => {
       id: uniqid(),
       catId: categories[i].id,
       url: path.resolve(__dirname, '../uploadedImages/tea.png'),
-      title: 'test title',
-      desc: 'test desc',
+      title: randomWords({ min: 2, max: 5, join: ' ' }),
+      desc: randomWords({ min: 20, max: 25, join: ' ' }),
       price: Math.random() * 10000
     }))
     products = products.concat(preparedProducts)
   }
-  return products
+  return sort(products, 'price')
 }
 
 const products = generateProducts(categories)

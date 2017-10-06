@@ -22,7 +22,7 @@ export default class ProductCard extends Component {
           <div className={styles.tea__title__text}>{ product.title }</div>
           <div className={ cn(styles.tea__title__price, styles[`background_${priceColor}`]) }>
             <span>RUB </span>
-            <strong>{ product.price }</strong>
+            <strong>{ parseInt(product.price, 10) }</strong>
           </div>
         </div>
         <div className={styles.tea__text}>{ product.desc }</div>

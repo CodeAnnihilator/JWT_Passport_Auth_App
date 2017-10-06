@@ -31,7 +31,7 @@ function* authorizeTokenSaga() {
     yield put(loginPending(true, 'Authorization is in progress', 'Checking user data'))
     try {
       const { data: { user } } = yield call(authenticateToken, token)
-      yield call(delay, 2000)
+      // yield call(delay, 2000)
       yield put(loginSuccess(user.username))
       yield put(loginPending(false, 'success', 'Wow, you have successfully logged in!'))
     } catch (e) {
