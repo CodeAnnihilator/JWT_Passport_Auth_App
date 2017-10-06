@@ -13,7 +13,7 @@ import PrivateRoute from './componentsHOC/RequireAuthHOC'
 import AuthRoute from './componentsHOC/AuthenticatedHOC'
 
 import CategoriesComponent from '@src/components/Categories/CategoriesComponent'
-import CategoryComponent from '@src/components/Category/CategoryComponent'
+import CategoryProductsContainer from '@src/components/CategoryProducts/CategoryProductsContainer'
 import ProductComponent from '@src/components/Product/ProductComponent'
 
 const Routes = () => (
@@ -21,7 +21,7 @@ const Routes = () => (
     <Switch>
       <Redirect exact from='/' to='/categories'/>
       <PrivateRoute exact path='/categories' component={() => <CategoriesComponent />} />
-      <PrivateRoute exact path='/categories/:cat_id' component={() => <CategoryComponent />} />
+      <PrivateRoute exact path='/categories/:cat_id' component={() => <CategoryProductsContainer />} />
       <PrivateRoute exact path='/categories/:cat_id/products/:prod_id' component={() => <ProductComponent />} />
       <AuthRoute exact path='/login' component={() => <AuthLayout><LoginContainer /></AuthLayout>} />
       <AuthRoute exact path='/registration' component={() => <AuthLayout><RegistrateContainer /></AuthLayout>} />
