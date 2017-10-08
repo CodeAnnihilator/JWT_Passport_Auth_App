@@ -1,3 +1,3 @@
-import { fetch } from '@src/utils/fetch'
+import { authFetch } from '@src/utils/fetch'
 
-export const requestCurrentProductApi = id => fetch.get(`product?id=${id}`)
+export const requestCurrentProductApi = id => authFetch.get(`product?id=${id}`)

@@ -5,6 +5,7 @@ import bodyParser from 'body-parser'
 import morgan from 'morgan'
 import passport from 'passport'
 import jwt from 'jsonwebtoken'
+import cors from 'cors'
 
 import './config/passport'
 import authRoutes from './routes/auth'
@@ -13,6 +14,7 @@ import productsRoutes from './routes/products'
 
 const port = 9000
 
+app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
@@ -28,10 +30,10 @@ app.use((req, res, next) => {
 
 app.use(passport.initialize())
 
-let isAuthenticated = passport.authenticate('jwt', { session: false })
+let authenticated = passport.authenticate('jwt', { session: false })
 app.use('/api', authRoutes)
-app.use('/api', categoriesRoutes)
-app.use('/api', productsRoutes)
+app.use('/api', authenticated, categoriesRoutes)
+app.use('/api', authenticated, productsRoutes)
 
 app.listen(port)
 console.log(`Server is running on port ${port}`)

@@ -1,3 +1,3 @@
-import { fetch } from '@src/utils/fetch'
+import { authFetch } from '@src/utils/fetch'
 
-export const requestCategoryProducts = catId => fetch.get(`products?id=${catId}`)
+export const requestCategoryProducts = catId => authFetch.get(`products?id=${catId}`)
